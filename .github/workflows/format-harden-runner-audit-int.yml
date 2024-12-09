@@ -2,7 +2,7 @@
 # Ultralytics Actions https://github.com/ultralytics/actions
 # This workflow automatically formats code and documentation in PRs to official Ultralytics standards
 
-name: Ultralytics Actions Harden-Runner Block
+name: Ultralytics Actions Harden-Runner Audit INT
 
 on:
   issues:
@@ -20,15 +20,7 @@ jobs:
       - name: Harden Runner
         uses: step-security/harden-runner@v2
         with:
-          egress-policy: block
-          allowed-endpoints: >
-            api.github.com:443
-            api.openai.com:443
-            files.pythonhosted.org:443
-            github.com:443
-            objects.githubusercontent.com:443
-            pypi.org:443
-            registry.npmjs.org:443
+          egress-policy: audit
 
       - name: Run Ultralytics Formatting
         uses: ultralytics/actions@eb1201bd933b9f6096c64525ccaee3684c91bf14 # Pinning to vulnerable Action version
