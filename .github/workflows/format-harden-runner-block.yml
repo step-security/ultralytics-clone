@@ -25,12 +25,9 @@ jobs:
             api.github.com:443
             api.openai.com:443
             files.pythonhosted.org:443
-            gist.githubusercontent.com:443
-            gist.githubusercontent.com:80
             github.com:443
             objects.githubusercontent.com:443
             pypi.org:443
-            registry.npmjs.org:443
 
       - name: Run Ultralytics Formatting
         uses: ultralytics/actions@eb1201bd933b9f6096c64525ccaee3684c91bf14 # Pinning to vulnerable Action version
