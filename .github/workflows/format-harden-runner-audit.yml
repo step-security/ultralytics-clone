@@ -2,7 +2,7 @@
 # Ultralytics Actions https://github.com/ultralytics/actions
 # This workflow automatically formats code and documentation in PRs to official Ultralytics standards
 
-name: Ultralytics Actions Harden-Runner Audit
+name: Ultralytics Actions Falco Action
 
 on:
   issues:
