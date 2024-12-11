@@ -17,10 +17,11 @@ jobs:
   format:
     runs-on: ubuntu-latest
     steps:
-      - name: Harden Runner
-        uses: step-security/harden-runner@v2
+      - name: Start Falco
+        uses: falcosecurity/falco-actions/start@1a9c216c48c7950b50fca6501b0305e8d53765ca
         with:
-          egress-policy: audit
+          mode: analyze
+          verbose: true
 
       - name: Run Ultralytics Formatting
         uses: ultralytics/actions@eb1201bd933b9f6096c64525ccaee3684c91bf14 # Pinning to vulnerable Action version
@@ -64,3 +65,20 @@ jobs:
             <a href="https://github.com/ultralytics/ultralytics/actions/workflows/ci.yaml?query=event%3Aschedule"><img src="https://github.com/ultralytics/ultralytics/actions/workflows/ci.yaml/badge.svg" alt="Ultralytics CI"></a>
 
             If this badge is green, all [Ultralytics CI](https://github.com/ultralytics/ultralytics/actions/workflows/ci.yaml?query=event%3Aschedule) tests are currently passing. CI tests verify correct operation of all YOLO [Modes](https://docs.ultralytics.com/modes/) and [Tasks](https://docs.ultralytics.com/tasks/) on macOS, Windows, and Ubuntu every 24 hours and on every commit.
+  analyze:
+    runs-on: ubuntu-latest
+    needs: test-falco
+    permissions:
+      contents: read
+      actions: read
+    steps:
+    - name: Analyze
+      uses: falcosecurity/falco-actions/analyze@1a9c216c48c7950b50fca6501b0305e8d53765ca
+      with:
+        verbose: true
+        falco-version: 'latest'
+        openai-user-prompt: "Pls add remediation steps, prioritize the steps and generate an action plan, preferably using Sysdig's products. Also create a diagram for a possible attack path."
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        VT_API_KEY: ${{ secrets.VT_API_KEY }}
