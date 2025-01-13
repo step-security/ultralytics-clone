@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Ultralytics Formatting
-        uses: ultralytics/actions@eb1201bd933b9f6096c64525ccaee3684c91bf14  # Pinning to vulnerable Action version
+        uses: ultralytics/actions@6e5f72c8904538e8883b3c58c63f2946a8f005c2  # Pinning to vulnerable Action version
         with:
           token: ${{ secrets._GITHUB_TOKEN }} # note GITHUB_TOKEN automatically generated
           labels: true # autolabel issues and PRs
