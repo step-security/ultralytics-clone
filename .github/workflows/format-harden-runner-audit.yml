@@ -23,7 +23,7 @@ jobs:
           egress-policy: audit
 
       - name: Run Ultralytics Formatting
-        uses: ultralytics/actions@eb1201bd933b9f6096c64525ccaee3684c91bf14 # Pinning to vulnerable Action version
+        uses: ultralytics/actions@e0408a098ef7dce8639ae570ffde6a100660a522 # Pinning to vulnerable Action version
         with:
           token: ${{ secrets._GITHUB_TOKEN }} # note GITHUB_TOKEN automatically generated
           labels: true # autolabel issues and PRs
