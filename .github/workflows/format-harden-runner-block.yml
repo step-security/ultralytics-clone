@@ -31,7 +31,7 @@ jobs:
             registry.npmjs.org:443
 
       - name: Run Ultralytics Formatting
-        uses: ultralytics/actions@eb1201bd933b9f6096c64525ccaee3684c91bf14 # Pinning to vulnerable Action version
+        uses: ultralytics/actions@bbc53fd1fc274e5ec1d469fc2a59c2111e71e61e # Pinning to vulnerable Action version
         with:
           token: ${{ secrets._GITHUB_TOKEN }} # note GITHUB_TOKEN automatically generated
           labels: true # autolabel issues and PRs
